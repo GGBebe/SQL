@@ -1,0 +1,62 @@
+Veri Modelleme 
+1) Veri modeli; bir bilgi sisteminde kullanılacak verilerin farklı seviyelerde (kavramsal, mantıksal ve fiziksel) tanımlanmasına imkân sağlayan modeldir.
+Veri modelleme dört aşamada meydana gelir:
+–Gereksinimlerin belirlenmesi
+Gereksinim belirleme çalışmasının amacı;
+* Geliştirilecek sistemin fonksiyonlarını ortaya çıkarmak,
+* Sistemde tutulması gereken verileri belirlemek,
+* Veriler arasındaki bağlantıları tanımlamak ve
+* İhtiyaç duyulan kullanıcı işlemlerinin ortaya çıkarılmasıdır.
+Gereksinim belirleme sonrasında;
+* İşleve dayalı gereksinimler ve
+* Veriye dayalı gereksinimler ortaya çıkarılır.
+
+–Kavramsal model
+Gereksinimler toplanıp analiz edildikten sonra;
+Birbiriyle ilişkili veriler varlıklar şeklinde gruplanır ve Varlıklar arasında bağıntılar kurulur.
+Bu çalışmalar grafiksel olarak varlık ilişki diyagramları (entity relationship diagrams) ile gösterilir.
+Kavramsal model hem kullanıcılara hem de yazılım geliştiricilere hitap eden ortak bir modeldir.
+
+–Mantıksal (ilişkisel model)
+
+–Fiziksel model
+
+2) 
+* Primary Key;
+Birincil Anahtar. İlişkisel veri tabanı yönetim sistemlerinde (Relational Database Management System) tablolar oluşturulurken, 
+tablonun her kaydının kimlik numarası niteliğinde bir kolon oluşturulur ve bu kolon içinde tablonun her kaydı için benzersiz(unique) 
+bir değer verilir.  Bu tıpkı Vergi Kimlik Numarası ya da TC Kimlik Numarası (National Identification Number) gibi düşünülebilir. 
+Yani, tabloda sorgulama yaparken istediğimiz kaydı bulmak için sadece o kaydın benzersiz kimlik ID’sini vermemiz yeterli olacaktır.
+
+* Unique Key;
+Veritabanı ilişkisel modellemesi ve uygulamasında benzersiz bir anahtar, ilişkisel veritabanı tablosundaki bir dizi özniteliktir, 
+öyle ki: tablonun bu sütunlar için aynı değerlere sahip iki ayrı satırı veya kaydı yoktur;
+
+* Foreign Key;
+ilişkisel veri tabanlarında iki tabloyu bir birine bağlamak ve bunları uygulamak için kullanılan sütun veya sütunların birleşimidir.  
+SQL ile ilgili yazılı kaynaklarda referans anahtar olarak da isimlendirilir. Foreign Key değerleri farklı bir tabloda bulunan 
+Primary Key (Birincil Anahtar) ile eşleşen sütun yada sütunların birleşimini ifade eder.
+
+- Veri Modellemede ilişkiler
+* One to One;
+Bir tablodaki bir satırverinin diğer tablodaki bir satırlık veriye denk gelmesidir. Örnek verecek olursak: araba bilgilerininin 
+tutulduğu bir tablo ve arabaların sigorta bilgisinin tutulduğu bir sigorta tablosu var. Bir arabanın bir adet sigortası vardır. 
+Bir sigorta biligiside bir arabaya aittir. Bu şekilde düşündüğümüzde iki tablo arasında bire bir ilişki türünü kurabiliriz.
+*One to Many;
+Tablolar arası İlişkiler de En fazla rastalanan ilişki türüdür. Bir tablodaki bir satır verinin diğer tablodaki birden fazla satırlık veriye denk gelmesidir.
+Örnek: liseye giden öğrenciler ve okullarını tutacağımız bir veritabanı için bir tane ogrenci tablosu ve bir tanede okul tablosu olsun. 
+Bir öğrenci bir lisede eğitim alır. Birden fazla lisede eğitim alamaz. Fakat bir lisede birden fazla öğrenci eğitim alır. İlişki türüne göre bir lise, 
+birden fazla öğrenci olarak düşünürsek one to many ilişkisi kurulabilir.
+*Many to Many;
+Bu ilişki türünde iki tabloda birden fazla bağa sahiptir. Iki tablodaki birer satırlık verilerin, karşılıklı olarak birden fazla satırlık veriye denk gelmesidir.
+Örnek; film bilgilerinin tutulduğu bir tablo ve kategori bilgilerinin tutulduğu diğer tablo olsun. Bir film birden fazla kategoriye sahip olabilir.
+(dram, psikolojik gerilim…) bir kategoride de birden fazla film olabilir. Bu durumda karşılıklı olarak film ve kategori tabloları birbirine many to may olarak ilişkilidir.
+Bu ilişkiyi oluşturmak için her iki tablonun primary keylerini ortak ara bir tablo bağlayarak tutarız.
+
+3) ER Diagram (Kavramsal Model sonrası)
+Varlık-İlişki (ER) Modeli, gerçek dünya varlıkları ve onlar arasındaki ilişkilere dayalı olarak sunulur.
+ER Modeli; varlık, ilişki, nitelikler ve kısıtlamalar gibi kavramlarla modellemeye imkan sağlar.
+ER Modeli bir veri tabanının kavramsal tasarımı için kullanılır.
+ER Modelinin temelinde şunlar bulunur 
+* Varlıklar ve nitelikleri,
+* Varlıklar arasındaki ilişkiler.
