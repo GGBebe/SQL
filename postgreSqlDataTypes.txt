@@ -1,48 +1,48 @@
 Data Tipi İsmi								Takma Adlar					Tanım
 
-bigint									      	        int8					  	sekiz baytlık tamsayı
-bigserial								      	        serial8				   	otomatik artan sekiz bayt tamsayı
-bit [ (n) ]	 															                sabit uzunluklu bit dizisi
-bit varying [ (n) ]			      	        varbit [ (n) ]		değişken uzunluklu bit dizisi
-boolean									      	        bool						  mantıksal Boolean (true/false)
-box	 																	                    düzlemde dikdörtgen kutu
-bytea	 															            	        ikili veri (“byte array”)
-character [ (n) ]						  	        char [ (n) ]	  	sabit uzunluklu karakter dizisi
-character varying [ (n) ]				        varchar [ (n) ]		değişken uzunluklu karakter dizisi
-cidr	 															            	        IPv4 veya IPv6 ağ adresi
-circle	 																                  düzlemde daire
-date	 															            	        takvim tarihi (yıl, ay, gün)
-double precision						  	        float8						çift duyarlı kayan noktalı sayı (8 bayt)
-inet	 															                    	IPv4 veya IPv6 ana bilgisayar adresi
-integer									      	        int, int4					dört baytlık tamsayı
-interval [ fields ] [ (p) ]	 											        zaman aralığı
-json	 															            	        metinsel JSON verileri
-jsonb	 																                    ayrıştırılmış ikili JSON verileri
-line	 															            	        düzlemde sonsuz çizgi
-lseg	 															            	        düzlemde doğru parçası
-macaddr	 															          	        MAC (Media Access Control) adresi
-macaddr8	 															                  MAC (Media Access Control) adresi (EUI-64 formatı)
-money	 																                    döviz tutarı
-numeric [ (p, s) ]						          decimal [(p, s)]  seçilebilir hassasiyetin tam sayısal değeri
-path	 															            	        düzlemde geometrik yol
-pg_lsn	 															          	        PostgreSQL Günlük Sıra Numarası
-pg_snapshot	 														        	        kullanıcı düzeyinde işlem kimliği anlık görüntüsü
-point	 															            	        düzlemde geometrik nokta
-polygon	 															          	        düzlemde kapalı geometrik yol
-real										                float4						tek duyarlıklı kayan noktalı sayı (4 bayt)
-smallint									              int2					  	iki baytlık tamsayı
-smallserial									            serial2						otomatik artan iki baytlık tamsayı
-serial										              serial4						otomatik artan dört baytlık tamsayı
-text	 															            	        değişken uzunluklu karakter dizisi
-time [ (p) ] [ without time zone ]	 							        günün saati (zaman dilimi yok)
-time [ (p) ] with time zone			        timetz			    	saat dilimi dahil günün saati
-timestamp [ (p) ] [ without time zone ]									  tarih ve saat (zaman dilimi yok)
-timestamp [ (p) ] with time zone        timestamptz				tarih ve saat (zaman dilimi dahil)
-tsquery	 																                  metin arama sorgusu
-tsvector	 															                  metin arama belgesi
-txid_snapshot	 													                  kullanıcı düzeyinde işlem kimliği anlık görüntüsü
-uuid	 																                    evrensel olarak benzersiz tanımlayıcı
-xml	 																                      XML datası
+bigint										int8						sekiz baytlık tamsayı
+bigserial									serial8						otomatik artan sekiz bayt tamsayı
+bit [ (n) ]	 															sabit uzunluklu bit dizisi
+bit varying [ (n) ]							varbit [ (n) ]				değişken uzunluklu bit dizisi
+boolean										bool						mantıksal Boolean (true/false)
+box	 																	düzlemde dikdörtgen kutu
+bytea	 																ikili veri (“byte array”)
+character [ (n) ]							char [ (n) ]				sabit uzunluklu karakter dizisi
+character varying [ (n) ]					varchar [ (n) ]				değişken uzunluklu karakter dizisi
+cidr	 																IPv4 veya IPv6 ağ adresi
+circle	 																düzlemde daire
+date	 																takvim tarihi (yıl, ay, gün)
+double precision							float8						çift duyarlı kayan noktalı sayı (8 bayt)
+inet	 																IPv4 veya IPv6 ana bilgisayar adresi
+integer										int, int4					dört baytlık tamsayı
+interval [ fields ] [ (p) ]	 											zaman aralığı
+json	 																metinsel JSON verileri
+jsonb	 																ayrıştırılmış ikili JSON verileri
+line	 																düzlemde sonsuz çizgi
+lseg	 																düzlemde doğru parçası
+macaddr	 																MAC (Media Access Control) adresi
+macaddr8	 															MAC (Media Access Control) adresi (EUI-64 formatı)
+money	 																döviz tutarı
+numeric [ (p, s) ]							decimal [ (p, s) ]			seçilebilir hassasiyetin tam sayısal değeri
+path	 																düzlemde geometrik yol
+pg_lsn	 																PostgreSQL Günlük Sıra Numarası
+pg_snapshot	 															kullanıcı düzeyinde işlem kimliği anlık görüntüsü
+point	 																düzlemde geometrik nokta
+polygon	 																düzlemde kapalı geometrik yol
+real										float4						tek duyarlıklı kayan noktalı sayı (4 bayt)
+smallint									int2						iki baytlık tamsayı
+smallserial									serial2						otomatik artan iki baytlık tamsayı
+serial										serial4						otomatik artan dört baytlık tamsayı
+text	 																değişken uzunluklu karakter dizisi
+time [ (p) ] [ without time zone ]	 									günün saati (zaman dilimi yok)
+time [ (p) ] with time zone					timetz						saat dilimi dahil günün saati
+timestamp [ (p) ] [ without time zone ]									tarih ve saat (zaman dilimi yok)
+timestamp [ (p) ] with time zone			timestamptz					tarih ve saat (zaman dilimi dahil)
+tsquery	 																metin arama sorgusu
+tsvector	 															metin arama belgesi
+txid_snapshot	 														kullanıcı düzeyinde işlem kimliği anlık görüntüsü
+uuid	 																evrensel olarak benzersiz tanımlayıcı
+xml	 																	XML datası
 
 Her veri türünün girdi ve çıktı işlevleri tarafından belirlenen harici bir temsili vardır. Yerleşik türlerin çoğu, bariz dış biçimlere sahiptir. 
 Bununla birlikte, geometrik yollar gibi çeşitli türler ya PostgreSQL'e özgüdür ya da tarih ve saat türleri gibi birkaç olası biçime sahiptir. 
@@ -105,11 +105,11 @@ ve bu alanların beklenen sıralamasını belirtmek için destek vardır. DateSt
 Tarih/saat türlerinin çıktı formatı, ISO 8601, SQL (Ingres), geleneksel POSTGRES (Unix tarih formatı) veya Almanca olmak üzere dört stilden birine ayarlanabilir. Varsayılan ISO biçimidir. 
 (SQL standardı, ISO 8601 formatının kullanılmasını gerektirir. "SQL" çıktı formatının adı tarihsel bir tesadüftür.)
 
-Stil Adı		Açıklama					        Örnek Çıktı
-ISO				  ISO 8601, SQL standard		1997-12-17 07:37:16-08
-SQL				  traditional style			    12/17/1997 07:37:16.00 PST
-Postgres		original style				    Wed Dec 17 07:37:16 1997 PST
-German			regional style				    17.12.1997 07:37:16.00 PST
+Stil Adı		Açıklama					Örnek Çıktı
+ISO				ISO 8601, SQL standard		1997-12-17 07:37:16-08
+SQL				traditional style			12/17/1997 07:37:16.00 PST
+Postgres		original style				Wed Dec 17 07:37:16 1997 PST
+German			regional style				17.12.1997 07:37:16.00 PST
 
 #!5.3 Saat Dilimi
 Zaman dilimleri ve zaman dilimi kuralları, yalnızca dünya geometrisinden değil, siyasi kararlardan da etkilenir. 1900'lerde dünyanın dört bir yanındaki saat dilimleri bir şekilde standart hale geldi, ancak özellikle 
