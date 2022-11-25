@@ -1,3 +1,5 @@
+(P.S. Metni kopyalar ve localinize alırsanız metinsel kaymalar düzelecektir!)
+
 Data Tipi İsmi								Takma Adlar					Tanım
 
 bigint										int8						sekiz baytlık tamsayı
