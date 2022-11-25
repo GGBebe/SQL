@@ -2,7 +2,7 @@ Data Tipi İsmi								Takma Adlar					Tanım
 
 bigint										int8						sekiz baytlık tamsayı
 bigserial									serial8						otomatik artan sekiz bayt tamsayı
-bit [ (n) ]	 															sabit uzunluklu bit dizisi
+bit [ (n) ]	 								.							sabit uzunluklu bit dizisi
 bit varying [ (n) ]							varbit [ (n) ]				değişken uzunluklu bit dizisi
 boolean										bool						mantıksal Boolean (true/false)
 box	 										.							düzlemde dikdörtgen kutu
