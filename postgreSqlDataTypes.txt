@@ -138,18 +138,18 @@ PostgreSQL, standart SQL türü boole sağlar. Boolean türü birkaç duruma sah
 
 Boolean sabitleri, SQL sorgularında TRUE, FALSE ve NULL SQL anahtar sözcükleriyle temsil edilebilir.
 
-Boolean türü için veri türü giriş işlevi, "doğru" durum için şu dize gösterimlerini kabul eder:
+Boolean türü için veri türü giriş işlevi, "TRUE" durum için şu dize gösterimlerini kabul eder:
 
-doğru
-evet
-üzerinde
+true
+yes
+on
 1
 
 
-ve "yanlış" durum için bu temsiller:
+ve "FALSE" durum için bu temsiller:
 
-yanlış
-hayır
-kapalı
+false
+no
+closed
 0
 Bu dizilerin benzersiz önekleri de kabul edilir, örneğin t veya n. Baştaki veya sondaki boşluk yoksayılır ve büyük/küçük harf fark etmez.
