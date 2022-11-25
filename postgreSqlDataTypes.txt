@@ -1,0 +1,153 @@
+Data Tipi İsmi								Takma Adlar					Tanım
+
+bigint										int8						sekiz baytlık tamsayı
+bigserial									serial8						otomatik artan sekiz bayt tamsayı
+bit [ (n) ]	 															sabit uzunluklu bit dizisi
+bit varying [ (n) ]							varbit [ (n) ]				değişken uzunluklu bit dizisi
+boolean										bool						mantıksal Boolean (true/false)
+box	 																	düzlemde dikdörtgen kutu
+bytea	 																ikili veri (“byte array”)
+character [ (n) ]							char [ (n) ]				sabit uzunluklu karakter dizisi
+character varying [ (n) ]					varchar [ (n) ]				değişken uzunluklu karakter dizisi
+cidr	 																IPv4 veya IPv6 ağ adresi
+circle	 																düzlemde daire
+date	 																takvim tarihi (yıl, ay, gün)
+double precision							float8						çift duyarlı kayan noktalı sayı (8 bayt)
+inet	 																IPv4 veya IPv6 ana bilgisayar adresi
+integer										int, int4					dört baytlık tamsayı
+interval [ fields ] [ (p) ]	 											zaman aralığı
+json	 																metinsel JSON verileri
+jsonb	 																ayrıştırılmış ikili JSON verileri
+line	 																düzlemde sonsuz çizgi
+lseg	 																düzlemde doğru parçası
+macaddr	 																MAC (Media Access Control) adresi
+macaddr8	 															MAC (Media Access Control) adresi (EUI-64 formatı)
+money	 																döviz tutarı
+numeric [ (p, s) ]							decimal [ (p, s) ]			seçilebilir hassasiyetin tam sayısal değeri
+path	 																düzlemde geometrik yol
+pg_lsn	 																PostgreSQL Günlük Sıra Numarası
+pg_snapshot	 															kullanıcı düzeyinde işlem kimliği anlık görüntüsü
+point	 																düzlemde geometrik nokta
+polygon	 																düzlemde kapalı geometrik yol
+real										float4						tek duyarlıklı kayan noktalı sayı (4 bayt)
+smallint									int2						iki baytlık tamsayı
+smallserial									serial2						otomatik artan iki baytlık tamsayı
+serial										serial4						otomatik artan dört baytlık tamsayı
+text	 																değişken uzunluklu karakter dizisi
+time [ (p) ] [ without time zone ]	 									günün saati (zaman dilimi yok)
+time [ (p) ] with time zone					timetz						saat dilimi dahil günün saati
+timestamp [ (p) ] [ without time zone ]									tarih ve saat (zaman dilimi yok)
+timestamp [ (p) ] with time zone			timestamptz					tarih ve saat (zaman dilimi dahil)
+tsquery	 																metin arama sorgusu
+tsvector	 															metin arama belgesi
+txid_snapshot	 														kullanıcı düzeyinde işlem kimliği anlık görüntüsü
+uuid	 																evrensel olarak benzersiz tanımlayıcı
+xml	 																	XML datası
+
+Her veri türünün girdi ve çıktı işlevleri tarafından belirlenen harici bir temsili vardır. Yerleşik türlerin çoğu, bariz dış biçimlere sahiptir. 
+Bununla birlikte, geometrik yollar gibi çeşitli türler ya PostgreSQL'e özgüdür ya da tarih ve saat türleri gibi birkaç olası biçime sahiptir. 
+Girdi ve çıktı işlevlerinden bazıları tersine çevrilemez, yani bir çıktı işlevinin sonucu, orijinal girdiyle karşılaştırıldığında doğruluğunu kaybedebilir.
+
+#!1.1. Tamsayı
+Smallint, integer ve bigint türleri, çeşitli aralıklardaki tam sayıları, yani kesirli bileşenleri olmayan sayıları depolar. 
+Değerleri izin verilen aralığın dışında saklama girişimleri bir hatayla sonuçlanacaktır.
+
+Aralık, depolama boyutu ve performans arasında en iyi dengeyi sunduğu için tamsayı türü yaygın olarak tercih edilir. 
+Smallint türü, genellikle yalnızca disk alanı önemliyse kullanılır. Bigint türü, tamsayı türünün aralığı yetersiz olduğunda kullanılmak üzere tasarlanmıştır.
+
+SQL yalnızca integer (veya int), smallint ve bigint tamsayı türlerini belirtir. int2, int4 ve int8 tür adları, 
+diğer bazı SQL veritabanı sistemleri tarafından da kullanılan uzantılardır.
+
+#!1.2. numeric data tipi
+Numeric tip, çok sayıda rakam içeren sayıları saklayabilir. Parasal tutarların ve kesinliğin gerekli olduğu diğer miktarların saklanması için özellikle önerilir. 
+Sayısal değerlerle yapılan hesaplamalar, örneğin toplama, çıkarma, çarpma gibi mümkün olan yerlerde kesin sonuçlar verir.
+
+#!1.3. Ondalıklı Sayılar
+Gerçek ve çift duyarlıklı veri türleri kesin olmayan, değişken duyarlıklı sayısal türlerdir. Şu anda desteklenen tüm platformlarda, bu türler, temel işlemci, 
+işletim sistemi ve derleyicinin desteklediği ölçüde, İkili Kayan Nokta Aritmetiği için IEEE Standardı 754'ün (sırasıyla tek ve çift kesinlikli) uygulamalarıdır.
+
+Kesin olmayan, bazı değerlerin tam olarak dahili formata dönüştürülemeyeceği ve yaklaşık değerler olarak saklanacağı, böylece bir değerin saklanması ve 
+alınmasının küçük tutarsızlıklar gösterebileceği anlamına gelir. Bu hataların yönetimi ve hesaplamalar yoluyla nasıl yayıldıkları, matematik ve bilgisayar 
+bilimlerinin bütün bir dalının konusudur ve aşağıdaki noktalar dışında burada ele alınmayacaktır:
+
+- Kesin depolama ve hesaplamalara (parasal tutarlar gibi) ihtiyacınız varsa, bunun yerine sayısal türü kullanın.
+
+- Önemli herhangi bir şey için bu türlerle karmaşık hesaplamalar yapmak istiyorsanız, özellikle sınır durumlarında (sonsuz, taşma) belirli davranışlara güveniyorsanız, uygulamayı dikkatli bir şekilde değerlendirmelisiniz.
+
+- Eşitlik için iki kayan noktalı değeri karşılaştırmak her zaman beklendiği gibi çalışmayabilir.
+
+#!1.4. Seri Türleri
+Smallserial, serial ve bigserial veri türleri gerçek türler değildir, yalnızca benzersiz tanımlayıcı sütunlar oluşturmak için gösterim kolaylığı sağlar 
+(bazı diğer veritabanları tarafından desteklenen AUTO_INCREMENT özelliğine benzer).
+
+#!2.0 Money
+Money türü, sabit bir kesirli hassasiyetle bir para birimi tutarını saklar. Kesirli kesinlik, veritabanının lc_monetary ayarı tarafından belirlenir. 
+Verilen aralık, iki kesirli basamak olduğunu varsayar. Girdi, tamsayı ve kayan nokta değişmezleri gibi çeşitli biçimlerde ve '$1.000,00' gibi tipik para birimi biçimlendirmesinde kabul edilir. 
+Çıktı genellikle ikinci biçimdedir, ancak yerel ayarlara bağlıdır.
+
+#!3.0 Char tipleri
+SQL iki birincil karakter türü tanımlar: karakter varying(n) ve caharacter(n), burada n pozitif bir tam sayıdır. Bu türlerin her ikisi de n karaktere kadar (bayt değil) uzunlukta dizeler depolayabilir. 
+Bu türden bir sütunda daha uzun bir dize depolama girişimi, fazla karakterlerin tümü boşluk olmadığı sürece bir hatayla sonuçlanacaktır; bu durumda dize maksimum uzunluğa kesilecektir. 
+(Bu biraz tuhaf istisna, SQL standardı tarafından gereklidir.) Depolanacak dize belirtilen uzunluktan daha kısaysa, karakter türündeki değerler boşlukla doldurulacaktır; 
+değişen tip karakter değerleri basitçe daha kısa dizgiyi saklayacaktır.
+
+#!4.0 İkili veri tipleri
+Bir ikili dize, bir sekizli (veya bayt) dizisidir. İkili diziler, karakter dizilerinden iki şekilde ayrılır. İlk olarak, ikili diziler özellikle sıfır değeri sekizlilerinin ve diğer "yazdırılamayan" sekizlilerin 
+(genellikle 32 ila 126 ondalık aralığı dışındaki sekizlilerin) saklanmasına izin verir. Karakter dizileri sıfır sekizlilere izin vermez ve ayrıca veritabanının seçili karakter seti kodlamasına göre geçersiz olan 
+diğer sekizli değerlere ve sekizli değer dizilerine izin vermez. İkincisi, ikili diziler üzerindeki işlemler gerçek baytları işlerken, karakter dizilerinin işlenmesi yerel ayarlara bağlıdır. Kısacası, programcının 
+"ham bayt" olarak düşündüğü verileri depolamak için ikili diziler, metin depolamak için ise karakter dizileri uygundur.
+
+#!5.1 Tarih Saat Girdisi
+Tarih ve saat girişi, ISO 8601, SQL uyumlu, geleneksel POSTGRES ve diğerleri dahil olmak üzere neredeyse tüm makul formatlarda kabul edilir. Bazı formatlar için, tarih girişinde gün, ay ve yıl sıralaması belirsizdir 
+ve bu alanların beklenen sıralamasını belirtmek için destek vardır. DateStyle parametresini ay-gün-yıl yorumunu seçmek için MDY, gün-ay-yıl yorumunu seçmek için DMY veya yıl-ay-gün yorumunu seçmek için YMD olarak ayarlayın.
+
+#!5.2 Tarih Saat Çıktısı
+Tarih/saat türlerinin çıktı formatı, ISO 8601, SQL (Ingres), geleneksel POSTGRES (Unix tarih formatı) veya Almanca olmak üzere dört stilden birine ayarlanabilir. Varsayılan ISO biçimidir. 
+(SQL standardı, ISO 8601 formatının kullanılmasını gerektirir. "SQL" çıktı formatının adı tarihsel bir tesadüftür.)
+
+Stil Adı		Açıklama					Örnek Çıktı
+ISO				ISO 8601, SQL standard		1997-12-17 07:37:16-08
+SQL				traditional style			12/17/1997 07:37:16.00 PST
+Postgres		original style				Wed Dec 17 07:37:16 1997 PST
+German			regional style				17.12.1997 07:37:16.00 PST
+
+#!5.3 Saat Dilimi
+Zaman dilimleri ve zaman dilimi kuralları, yalnızca dünya geometrisinden değil, siyasi kararlardan da etkilenir. 1900'lerde dünyanın dört bir yanındaki saat dilimleri bir şekilde standart hale geldi, ancak özellikle 
+gün ışığından yararlanma kurallarıyla ilgili olarak keyfi değişikliklere eğilimli olmaya devam ediyor. PostgreSQL, tarihsel saat dilimi kuralları hakkında bilgi için yaygın olarak kullanılan IANA (Olson) saat dilimi 
+veritabanını kullanır. Gelecekteki zamanlar için, belirli bir zaman dilimi için bilinen en son kuralların gelecekte de süresiz olarak uygulanmaya devam edeceği varsayımı vardır.
+
+PostgreSQL, tipik kullanım için SQL standart tanımlarıyla uyumlu olmaya çalışır. Bununla birlikte, SQL standardının tuhaf bir tarih ve saat türleri ve yetenekleri karışımı vardır. İki bariz sorun şunlardır:
+
+- Tarih türü ilişkili bir saat dilimine sahip olamasa da, saat türü olabilir. Gerçek dünyadaki saat dilimleri, bir tarih ve zamanla ilişkilendirilmedikçe çok az anlam ifade eder, çünkü ofset yıl boyunca gün 
+ışığından yararlanma saati sınırlarıyla değişebilir.
+
+- Varsayılan saat dilimi, UTC'den sabit bir sayısal sapma olarak belirtilir. Bu nedenle, DST sınırları boyunca tarih/saat aritmetiği yaparken gün ışığından yararlanma saatine uyum sağlamak imkansızdır.
+
+#!5.4 Tarih Aralığı Girdisi
+aralık değerleri aşağıdaki ayrıntılı söz dizimi kullanılarak yazılabilir:
+
+[@] miktar birimi [miktar birimi...] [yön]
+burada miktar bir sayıdır (muhtemelen işaretlidir); birim mikrosaniye, milisaniye, saniye, dakika, saat, gün, hafta, ay, yıl, on yıl, yüzyıl, milenyum veya bu birimlerin kısaltmaları veya çoğullarıdır; 
+yön önce veya boş olabilir. at işareti (@) isteğe bağlı gürültüdür. Farklı birimlerin miktarları, uygun işaret muhasebesi ile dolaylı olarak eklenir. ago tüm alanları reddeder. Bu sözdizimi, 
+IntervalStyle postgres_verbose olarak ayarlanmışsa, aralık çıktısı için de kullanılır.
+
+#!6.0 Boolean Tipi (Depo alanı 1 Bayt)
+PostgreSQL, standart SQL türü boole sağlar. Boolean türü birkaç duruma sahip olabilir: "doğru", "yanlış" ve üçüncü bir durum, "bilinmeyen", SQL boş değeri ile temsil edilir.
+
+Boolean sabitleri, SQL sorgularında TRUE, FALSE ve NULL SQL anahtar sözcükleriyle temsil edilebilir.
+
+Boolean türü için veri türü giriş işlevi, "doğru" durum için şu dize gösterimlerini kabul eder:
+
+doğru
+evet
+üzerinde
+1
+
+
+ve "yanlış" durum için bu temsiller:
+
+yanlış
+hayır
+kapalı
+0
+Bu dizilerin benzersiz önekleri de kabul edilir, örneğin t veya n. Baştaki veya sondaki boşluk yoksayılır ve büyük/küçük harf fark etmez.
