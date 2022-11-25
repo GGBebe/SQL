@@ -2,7 +2,7 @@ Data Tipi İsmi								Takma Adlar					Tanım
 
 bigint										int8						sekiz baytlık tamsayı
 bigserial									serial8						otomatik artan sekiz bayt tamsayı
-bit [ (n) ]	 								.							sabit uzunluklu bit dizisi
+bit [ (n) ]	 															sabit uzunluklu bit dizisi
 bit varying [ (n) ]							varbit [ (n) ]				değişken uzunluklu bit dizisi
 boolean										bool						mantıksal Boolean (true/false)
 box	 										.							düzlemde dikdörtgen kutu
@@ -136,18 +136,18 @@ PostgreSQL, standart SQL türü boole sağlar. Boolean türü birkaç duruma sah
 
 Boolean sabitleri, SQL sorgularında TRUE, FALSE ve NULL SQL anahtar sözcükleriyle temsil edilebilir.
 
-Boolean türü için veri türü giriş işlevi, "TRUE" durum için şu dize gösterimlerini kabul eder:
+Boolean türü için veri türü giriş işlevi, "doğru" durum için şu dize gösterimlerini kabul eder:
 
-true
-yes
-on
+doğru
+evet
+üzerinde
 1
 
 
-ve "FALSE" durum için bu temsiller:
+ve "yanlış" durum için bu temsiller:
 
-false
-no
-closed
+yanlış
+hayır
+kapalı
 0
 Bu dizilerin benzersiz önekleri de kabul edilir, örneğin t veya n. Baştaki veya sondaki boşluk yoksayılır ve büyük/küçük harf fark etmez.
