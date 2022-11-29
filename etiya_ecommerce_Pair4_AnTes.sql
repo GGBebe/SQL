@@ -5,7 +5,7 @@
 -- Dumped from database version 15.1
 -- Dumped by pg_dump version 15.1
 
--- Started on 2022-11-28 11:23:46
+-- Started on 2022-11-29 15:20:05
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -972,6 +972,7 @@ INSERT INTO public.addresses (id, customer_id, title, district_id, street, build
 INSERT INTO public.addresses (id, customer_id, title, district_id, street, building_name, building_no, flat, door_no, zipcode) OVERRIDING SYSTEM VALUE VALUES (3, 3, 'Yan Ev', 5, 'Üzüm', 'Murat', '2', 2, 4, 54329);
 INSERT INTO public.addresses (id, customer_id, title, district_id, street, building_name, building_no, flat, door_no, zipcode) OVERRIDING SYSTEM VALUE VALUES (4, 2, 'İş', 2, 'Onur', 'İnan', '7', 2, 7, 35462);
 INSERT INTO public.addresses (id, customer_id, title, district_id, street, building_name, building_no, flat, door_no, zipcode) OVERRIDING SYSTEM VALUE VALUES (5, 1, 'Ev', 1, 'Patika', 'Feza', '20', 3, 12, 6550);
+INSERT INTO public.addresses (id, customer_id, title, district_id, street, building_name, building_no, flat, door_no, zipcode) OVERRIDING SYSTEM VALUE VALUES (6, 2, 'Yeni Ev', 7, 'Vadi', 'Kelebek', '7', 9, 55, 34555);
 
 
 --
@@ -1041,6 +1042,9 @@ INSERT INTO public.brands (id, brand_name, country_of_origin, service_region_id)
 INSERT INTO public.brands (id, brand_name, country_of_origin, service_region_id) OVERRIDING SYSTEM VALUE VALUES (3, 'Zara', 'Spain', 1);
 INSERT INTO public.brands (id, brand_name, country_of_origin, service_region_id) OVERRIDING SYSTEM VALUE VALUES (4, 'Pull & Bear', 'Spain', 3);
 INSERT INTO public.brands (id, brand_name, country_of_origin, service_region_id) OVERRIDING SYSTEM VALUE VALUES (5, 'Pull & Bear', 'Spain', 1);
+INSERT INTO public.brands (id, brand_name, country_of_origin, service_region_id) OVERRIDING SYSTEM VALUE VALUES (6, 'Karaca', 'Turkey', 1);
+INSERT INTO public.brands (id, brand_name, country_of_origin, service_region_id) OVERRIDING SYSTEM VALUE VALUES (7, 'Addax', 'Turkey', 1);
+INSERT INTO public.brands (id, brand_name, country_of_origin, service_region_id) OVERRIDING SYSTEM VALUE VALUES (8, 'Vestel', 'Turkey', 1);
 
 
 --
@@ -1086,6 +1090,9 @@ INSERT INTO public.colors (id, color_code, color_name) OVERRIDING SYSTEM VALUE V
 INSERT INTO public.colors (id, color_code, color_name) OVERRIDING SYSTEM VALUE VALUES (3, '#22222', 'Kırmızı');
 INSERT INTO public.colors (id, color_code, color_name) OVERRIDING SYSTEM VALUE VALUES (4, '#33333', 'Yeşil');
 INSERT INTO public.colors (id, color_code, color_name) OVERRIDING SYSTEM VALUE VALUES (5, '#78451', 'Gri');
+INSERT INTO public.colors (id, color_code, color_name) OVERRIDING SYSTEM VALUE VALUES (6, '#12571', 'Mavi');
+INSERT INTO public.colors (id, color_code, color_name) OVERRIDING SYSTEM VALUE VALUES (7, '#19950', 'Sarı');
+INSERT INTO public.colors (id, color_code, color_name) OVERRIDING SYSTEM VALUE VALUES (8, '#78291', 'Pembe');
 
 
 --
@@ -1290,6 +1297,9 @@ INSERT INTO public.products (id, name, unit_price, stock, category_id, product_r
 INSERT INTO public.products (id, name, unit_price, stock, category_id, product_rating, product_discount_id) OVERRIDING SYSTEM VALUE VALUES (7, 'Çelik Halka Küpe', '£24.20', 1000, 9, 2.3, 4);
 INSERT INTO public.products (id, name, unit_price, stock, category_id, product_rating, product_discount_id) OVERRIDING SYSTEM VALUE VALUES (8, 'Kısa Kruvaze Elbise', '£349.95', 50, 6, 4.2, 3);
 INSERT INTO public.products (id, name, unit_price, stock, category_id, product_rating, product_discount_id) OVERRIDING SYSTEM VALUE VALUES (5, 'Iç Dış Granit Ocak Üstü Tost Makinesi', '£149.99', 3250, 11, 4.7, NULL);
+INSERT INTO public.products (id, name, unit_price, stock, category_id, product_rating, product_discount_id) OVERRIDING SYSTEM VALUE VALUES (9, 'Essential Kablolu Epilatör', '£349.00', 3, 11, 4.5, NULL);
+INSERT INTO public.products (id, name, unit_price, stock, category_id, product_rating, product_discount_id) OVERRIDING SYSTEM VALUE VALUES (10, 'Gözlük Aksesuarı', '£49.50', 312, 9, 4.7, NULL);
+INSERT INTO public.products (id, name, unit_price, stock, category_id, product_rating, product_discount_id) OVERRIDING SYSTEM VALUE VALUES (11, 'Babymol Oyuncaklı Oyun Minderi', '£173.00', 98, 12, 4.4, NULL);
 
 
 --
@@ -1323,6 +1333,9 @@ INSERT INTO public.sellers (id, name, rating, follower_count, location_id, produ
 INSERT INTO public.sellers (id, name, rating, follower_count, location_id, product_count) OVERRIDING SYSTEM VALUE VALUES (3, 'Elif İç Giyim', 9.6, 20700, 5, 826);
 INSERT INTO public.sellers (id, name, rating, follower_count, location_id, product_count) OVERRIDING SYSTEM VALUE VALUES (4, 'Trendyol', 8.9, 815200, 1, 104000);
 INSERT INTO public.sellers (id, name, rating, follower_count, location_id, product_count) OVERRIDING SYSTEM VALUE VALUES (5, 'Stradivarius', 8.1, 357200, 2, 3100);
+INSERT INTO public.sellers (id, name, rating, follower_count, location_id, product_count) OVERRIDING SYSTEM VALUE VALUES (6, 'Nefes Maske', 9.4, 31600, 2, 112);
+INSERT INTO public.sellers (id, name, rating, follower_count, location_id, product_count) OVERRIDING SYSTEM VALUE VALUES (7, 'Ayers Ticaret', 8.8, 107, 2, 51);
+INSERT INTO public.sellers (id, name, rating, follower_count, location_id, product_count) OVERRIDING SYSTEM VALUE VALUES (8, 'Orange', 9.3, 880, 5, 124);
 
 
 --
@@ -1375,7 +1388,7 @@ INSERT INTO public.sizes (id, size_type) OVERRIDING SYSTEM VALUE VALUES (7, 'XS'
 -- Name: addresses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.addresses_id_seq', 5, true);
+SELECT pg_catalog.setval('public.addresses_id_seq', 6, true);
 
 
 --
@@ -1411,7 +1424,7 @@ SELECT pg_catalog.setval('public.brand_categories_id_seq', 12, true);
 -- Name: brand_sellers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.brand_sellers_id_seq', 5, true);
+SELECT pg_catalog.setval('public.brand_sellers_id_seq', 6, true);
 
 
 --
@@ -1420,7 +1433,7 @@ SELECT pg_catalog.setval('public.brand_sellers_id_seq', 5, true);
 -- Name: brands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.brands_id_seq', 5, true);
+SELECT pg_catalog.setval('public.brands_id_seq', 8, true);
 
 
 --
@@ -1447,7 +1460,7 @@ SELECT pg_catalog.setval('public.cities_id_seq', 9, true);
 -- Name: colors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.colors_id_seq', 5, true);
+SELECT pg_catalog.setval('public.colors_id_seq', 8, true);
 
 
 --
@@ -1591,7 +1604,7 @@ SELECT pg_catalog.setval('public.product_sizes_id_seq', 10, true);
 -- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.products_id_seq', 8, true);
+SELECT pg_catalog.setval('public.products_id_seq', 11, true);
 
 
 --
@@ -1618,7 +1631,7 @@ SELECT pg_catalog.setval('public.refunds_id_seq', 2, true);
 -- Name: sellers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.sellers_id_seq', 5, true);
+SELECT pg_catalog.setval('public.sellers_id_seq', 8, true);
 
 
 --
@@ -2233,7 +2246,7 @@ ALTER TABLE ONLY public.shipment_brands
     ADD CONSTRAINT shipmentbrand_district_id FOREIGN KEY (service_region_id) REFERENCES public.districts(id) NOT VALID;
 
 
--- Completed on 2022-11-28 11:23:46
+-- Completed on 2022-11-29 15:20:05
 
 --
 -- PostgreSQL database dump complete

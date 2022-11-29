@@ -72,3 +72,10 @@ where Lower(name) LIKE '__c%'
 
 select * from products
 where lower(name) like '%a_%'
+
+
+--en az 3 örnek olacak şekilde (istanbul bölgesine giden siparişler)
+--Hangi müşteri hangi ürünleri iade etmiş X
+--Ankaraya kaç ürün gitmiş X
+--Onur kaç ürün satın almış X
+--Satıcılar kaç ürün satmış 
