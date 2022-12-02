@@ -5,7 +5,7 @@
 -- Dumped from database version 15.1
 -- Dumped by pg_dump version 15.1
 
--- Started on 2022-12-01 16:01:42
+-- Started on 2022-12-02 14:52:06
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -373,7 +373,7 @@ CREATE TABLE public.order_products (
     order_id integer NOT NULL,
     product_id integer NOT NULL,
     quantity integer NOT NULL,
-    total_price money NOT NULL
+    total_price numeric NOT NULL
 );
 
 
@@ -861,6 +861,7 @@ INSERT INTO public.discounts (id, name, percent, "desc") VALUES (1, 'Sepet İndi
 INSERT INTO public.order_details (id, total_price, customer_id, invoice_adress_id, payment_id, shipment_address_id, order_date) OVERRIDING SYSTEM VALUE VALUES (1, 62, 101, 1, 1, 1, '2022-11-30');
 INSERT INTO public.order_details (id, total_price, customer_id, invoice_adress_id, payment_id, shipment_address_id, order_date) OVERRIDING SYSTEM VALUE VALUES (2, 10, 102, 2, 1, 2, '2022-12-01');
 INSERT INTO public.order_details (id, total_price, customer_id, invoice_adress_id, payment_id, shipment_address_id, order_date) OVERRIDING SYSTEM VALUE VALUES (3, 45, 101, 1, 1, 1, '2022-12-01');
+INSERT INTO public.order_details (id, total_price, customer_id, invoice_adress_id, payment_id, shipment_address_id, order_date) OVERRIDING SYSTEM VALUE VALUES (4, 51.99, 103, 2, 1, 2, '2022-12-02');
 
 
 --
@@ -869,11 +870,12 @@ INSERT INTO public.order_details (id, total_price, customer_id, invoice_adress_i
 -- Data for Name: order_products; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.order_products (id, order_id, product_id, quantity, total_price) OVERRIDING SYSTEM VALUE VALUES (1, 1, 7, 1, '£12.00');
-INSERT INTO public.order_products (id, order_id, product_id, quantity, total_price) OVERRIDING SYSTEM VALUE VALUES (2, 1, 2, 2, '£50.00');
-INSERT INTO public.order_products (id, order_id, product_id, quantity, total_price) OVERRIDING SYSTEM VALUE VALUES (3, 2, 6, 1, '£10.00');
-INSERT INTO public.order_products (id, order_id, product_id, quantity, total_price) OVERRIDING SYSTEM VALUE VALUES (4, 3, 11, 1, '£25.00');
-INSERT INTO public.order_products (id, order_id, product_id, quantity, total_price) OVERRIDING SYSTEM VALUE VALUES (5, 3, 3, 1, '£20.00');
+INSERT INTO public.order_products (id, order_id, product_id, quantity, total_price) OVERRIDING SYSTEM VALUE VALUES (1, 1, 7, 1, 12.00);
+INSERT INTO public.order_products (id, order_id, product_id, quantity, total_price) OVERRIDING SYSTEM VALUE VALUES (2, 1, 2, 2, 50.00);
+INSERT INTO public.order_products (id, order_id, product_id, quantity, total_price) OVERRIDING SYSTEM VALUE VALUES (3, 2, 6, 1, 10.00);
+INSERT INTO public.order_products (id, order_id, product_id, quantity, total_price) OVERRIDING SYSTEM VALUE VALUES (4, 3, 11, 1, 25.00);
+INSERT INTO public.order_products (id, order_id, product_id, quantity, total_price) OVERRIDING SYSTEM VALUE VALUES (5, 3, 3, 1, 20.00);
+INSERT INTO public.order_products (id, order_id, product_id, quantity, total_price) OVERRIDING SYSTEM VALUE VALUES (6, 4, 501, 1, 51.99);
 
 
 --
@@ -922,6 +924,7 @@ INSERT INTO public.products (id, name, "desc", unit_price, stock, category_id, d
 --
 
 INSERT INTO public.products_sellers (product_id, seller_id, id) OVERRIDING SYSTEM VALUE VALUES (5, 1, 1);
+INSERT INTO public.products_sellers (product_id, seller_id, id) OVERRIDING SYSTEM VALUE VALUES (2, 1, 2);
 
 
 --
@@ -1090,7 +1093,7 @@ SELECT pg_catalog.setval('public.discounts_categories_id_seq', 1, false);
 -- Name: order_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.order_details_id_seq', 3, true);
+SELECT pg_catalog.setval('public.order_details_id_seq', 4, true);
 
 
 --
@@ -1099,7 +1102,7 @@ SELECT pg_catalog.setval('public.order_details_id_seq', 3, true);
 -- Name: order_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.order_products_id_seq', 5, true);
+SELECT pg_catalog.setval('public.order_products_id_seq', 6, true);
 
 
 --
@@ -1135,7 +1138,7 @@ SELECT pg_catalog.setval('public.products_id_seq', 501, true);
 -- Name: products_sellers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.products_sellers_id_seq', 1, true);
+SELECT pg_catalog.setval('public.products_sellers_id_seq', 2, true);
 
 
 --
@@ -1741,7 +1744,7 @@ ALTER TABLE ONLY public.user_reviews
     ADD CONSTRAINT userreview_orderproducts_fk FOREIGN KEY (order_product_id) REFERENCES public.order_products(id) NOT VALID;
 
 
--- Completed on 2022-12-01 16:01:42
+-- Completed on 2022-12-02 14:52:06
 
 --
 -- PostgreSQL database dump complete
